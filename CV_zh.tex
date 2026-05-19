@@ -1,0 +1,346 @@
+%!TEX encoding = UTF-8 Unicode
+% LaTeX Template for CV/Resume
+%-------------------------------------------------------------------------------
+% LuaLaTeX compilation needed
+%-------------------------------------------------------------------------------
+% Huanyu Zhou <spica.h.zhou@gmail.com>
+% https://spica-vir.github.io/about/
+%-------------------------------------------------------------------------------
+
+% configure
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{academicCV_zh}
+
+% contacts
+
+\myname{张三}
+\myposition{科研工作者}
+\myaddress{知名大学骨干院系 米花市 邮箱 000001}
+
+\mytel{123456789}
+\myemail{szhang@email.com}
+\mysite{this.url.does.not.exist/} % Personal website, without 'https://', optional
+
+% Some self-defined commands to make CV looks better
+
+% Highlight my name in author list
+\newcommand{\MeAsAuthor}{\textbf{\underline{Zhang S}}}
+\newcommand{\MeAsCorrespondingAuthor}{\textbf{\underline{Zhang S*}}}
+
+% Add comments (editor's pick, under review, etc.) to a paper entry in the publication list
+\newcommand{\PaperComment}[1]{\textbf{\underline{(#1)}}}
+
+\begin{document}
+
+%-------------------------------------------------------------------------------
+% Contact Info
+%-------------------------------------------------------------------------------
+
+\makeheader % basic information defined above
+
+% academic social media
+%
+% The following commands are defined in a similar way to '\href'.
+% For other social media, commands need to be defined in 'my_CVstyle.sty'
+% \myGoogleScholar
+% \myORCID
+% \myResearchGate
+% \myAcademia
+% \myGitHub
+% \myLinkedIn
+% \myTwitter
+%
+\begin{acmedia}
+	\myGoogleScholar{https://scholar.google.com/}{Google Scholar}
+	\EntrySeparator
+	\myORCID{https://orcid.org/}{ORCID}
+	\EntrySeparator
+	\myGitHub{https://github.com/}{GitHub}
+	\EntrySeparator
+	\myLinkedIn{https://www.linkedin.com/}{LinkedIn}
+\end{acmedia}
+
+
+%-------------------------------------------------------------------------------
+% Employment History
+%-------------------------------------------------------------------------------
+
+\section{工作经历}
+
+% an entry of education / employment
+% Usage: \experience{<position>}{<date>}{<organization>}{<location>}{<description(optional)>}
+
+\experience
+	{科研工作者}
+	{2025年至今}
+	{知名大学骨干院系}
+	{米花市}
+	{\begin{itemize}
+		\item[-] 关于这个工作的其他信息
+	\end{itemize}}
+
+%-------------------------------------------------------------------------------
+% Other Positions and Membership of Professional Bodies
+%-------------------------------------------------------------------------------
+
+\section{其他社会任职}
+
+\experience
+	{会员 / 荣誉会员}
+	{2021年至今}
+	{国际知名学会}
+	{桃花市}{}
+
+\experience
+	{技术顾问}
+	{2022年至2023年}
+	{跨国技术公司}
+	{梨花市}{}
+
+%-------------------------------------------------------------------------------
+% Education
+%-------------------------------------------------------------------------------
+
+\section{教育背景}
+
+\experience
+	{某一级学科 工学博士}
+	{2021年 $\sim$ 2025年}
+	{知名大学骨干院系}
+	{米花市}
+	{\begin{itemize}
+		\item[-] 导师：李四 教授
+	\end{itemize}}
+
+\experience
+	{某专业 工学硕士}
+	{2020年 $\sim$ 2021年}
+	{另一知名大学一流学科}
+	{樱花市}
+	{\begin{itemize}
+		\item[-] 导师：王五 教授
+	\end{itemize}}
+
+\experience
+	{某专业 理学学士}
+	{2016年 $\sim$ 2020年}
+	{同样知名大学王牌专业}
+	{梅花市}
+	{\begin{itemize}
+		\item[-] 毕业设计导师：赵六 教授
+		\item[-] 成绩：\textbf{100}/100，排名：\textbf{前1\%}
+	\end{itemize}}
+
+%-------------------------------------------------------------------------------
+% Research interests
+%-------------------------------------------------------------------------------
+\section{研究方向}
+
+\begin{text}
+\begin{itemize}[leftmargin=1em]
+	\item 拿帽子的研究方向A;
+	\item 挣钱的研究方向B；
+	\item 涨知识的研究方向C。
+\end{itemize}
+\end{text}
+
+%-------------------------------------------------------------------------------
+% Awards and Fellowships
+%-------------------------------------------------------------------------------
+
+\section{人才项目与科研获奖情况}
+
+% an entry of fellowship / honor / award etc. 
+% Usage: \award{<name>}{<date>}{<event>}{<description(optional)>}
+
+\award
+	{某重要人才引进计划}
+	{2026年至今}
+	{引进机构}
+	{关于人才计划的其他信息}
+
+\award
+	{最佳报告奖}
+	{2024年}
+	{国际学术会议}{}
+
+%-------------------------------------------------------------------------------
+% Grants
+%-------------------------------------------------------------------------------
+
+\section{科研项目}
+
+\subsection{主持项目}
+
+% an entry of research grants
+% Usage: \grant{<name>}{<date>}{<source>}{<amount(optional)>}{<description(optional)>}
+
+\grant
+	{面向某重大战略需求的基础理论研究}
+	{2025年 $\sim$ 2030年}
+	{慷慨的资助方 （项目编号：AB123456/X）}
+	{￥一大笔钱}{}
+
+\subsection{参与项目}
+
+\grant
+	{基于某基础理论的应用研究}
+	{2021年 $\sim$ 2024年}
+	{一家合作公司（项目编号：CD987654/Y）}
+	{￥一大笔钱}
+	{\begin{itemize}
+		\item[-] 合作者：路人甲 博士（某研究所）、龙套乙 副教授（某大学）
+	\end{itemize}}
+
+\subsection{计算资源与差旅资助}
+
+\grant
+	{国家超算中心计算资源}
+	{2022年至今}
+	{米花市超算中心（项目编号：01234）}
+	{100万核时}{}
+
+\grant
+	{国际顶尖会议差旅资助}
+	{2023年}
+	{会议组织方}
+	{￥一大笔钱}{}
+
+%-------------------------------------------------------------------------------
+% List of Publications
+%-------------------------------------------------------------------------------
+
+\section{论文发表}
+
+% Publication list environment
+% Usage: \begin{paperlist}[ascending=<true/false>]\end{paperlist}
+
+\begin{paperlist}[ascending=false]
+	% Preprint entry, must be used within paperlist environment
+	% Usage: \preprint{<author>}{<title>}{<journal/server>}{<status>}{<year>}{DOI(optional, without https://doi.org/)}{<other comments(optional)>}
+	\preprint
+		{\MeAsCorrespondingAuthor, Camino B, Harrison NM}
+		{Preprint for a ground-breaking research on topic A}
+		{arXiv}
+		{预印本}
+		{2026}{}{}
+
+	% Journal paper entry, must be used within paperlist environment
+	% Usage: \journal{<author>}{<title>}{<journal>}{<year>}{<volume(optional)>}{<issue(optional)>}{<page(optional)>}{DOI(optional, without https://doi.org/)}{<other comments(optional)>}
+	\journal
+		{Collaborator A, \MeAsAuthor, Collaborator B}
+		{Journal paper for a theoretical research on topic B}
+		{Peer-reviewed Journal}
+		{2026}
+		{00}
+		{00}
+		{0001--0009}{}{\PaperComment{Cover Article}}
+
+	% Conference paper entry, must be used within paperlist environment
+	% Usage: \conference{<author>}{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+	\conference
+		{\MeAsCorrespondingAuthor, Collaborator A}
+		{Conference paper for an experimental research on topic C}
+		{International Conference on Experimental Research}
+		{City, State}
+		{11th Dec. 2025}{}{}
+
+	% Book chapter entry, must be used within paperlist environment
+	% Usage: \chapter{<author>}{<chaptertitle>}{<editor(optional)>}{<booktitle>}{<edition(optional)>}{<location(optional)>}{<publisher>}{<year>}{<page>}{<URL(optional)>}{<other comments(optional)>}
+	\chapter
+		{\MeAsAuthor}
+		{Fundamental Theory on Topic D}
+		{Mr Editor, Ms Editor}
+		{Introduction to Topic D}
+		{1st}
+		{Location}
+		{Publisher}
+		{2020}
+		{16-32}{}{}
+
+\end{paperlist}
+
+%-------------------------------------------------------------------------------
+% List of Presentations
+%-------------------------------------------------------------------------------
+
+\section{会议报告}
+
+\subsection{特邀报告}
+% Presentation list environment
+% Usage: \begin{prelist}\end{prelist}
+\begin{prelist}
+	% keynote presentation entry, must be used within prelist environment
+	% Usage: \keynote{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+	\keynote
+		{The progress review of research topic A}
+		{International Conference on Topic A}
+		{City, State}
+		{2024}{https://www.youtube.com/}{}
+
+	% guest presentation entry, must be used within prelist environment
+	% Usage: \guest{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+	\guest
+		{My research on topic B}
+		{Departmental Seminar}
+		{Department, University}
+		{2023}{}{}
+\end{prelist}
+
+\subsection{投稿报告}
+\begin{prelist}
+	% oral presentation entry, must be used within prelist environment
+	% Usage: \oral{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+	\oral
+		{The presentation of some preliminary results}
+		{Regional Conference on Topic C}
+		{City, State}
+		{2021}{}{}
+
+	% poster presentation entry, must be used within prelist environment
+	% Usage: \poster{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+	\poster
+		{To exchange ideas on topic D}
+		{Discussion meeting by a society}
+		{Academic Society}
+		{2022}{}{}
+
+\end{prelist}
+
+%-------------------------------------------------------------------------------
+% Teaching and Mentoring experiences
+%-------------------------------------------------------------------------------
+\section{指导科研与授课}
+
+\subsection{承担课程}
+
+\experience
+	{硕士生科研课程}
+	{2025年至今}
+	{授课教师 知名大学}
+	{}{}
+
+\experience
+	{本科生实验课}
+	{2021年 $\sim$ 2025年}
+	{助教 另一知名大学}
+	{}{}
+
+\subsection{指导科研项目}
+
+\experience
+	{一项有趣的研究}
+	{2026年至今}
+	{博士 知名大学}
+	{小帅同学}
+	{}
+
+\experience
+	{一项更有趣的研究}
+	{2024年 $\sim$ 2026年}
+	{硕士 知名大学}
+	{小美同学}
+	{}
+
+\end{document}

@@ -1,0 +1,410 @@
+%-------------------------------------------------------------------------------
+% LuaLaTeX compilation needed
+%-------------------------------------------------------------------------------
+% Huanyu Zhou <spica.h.zhou@gmail.com>
+% https://spica-vir.github.io/about/
+%-------------------------------------------------------------------------------
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{academicCV_zh}[2026/05/13 Style package for CV]
+
+% Check compiler
+
+\RequirePackage{iftex}
+\ifPDFTeX
+    \PackageError{academicCV_z}{
+        pdfLaTeX is not supported. Use LuaLaTeX.
+    }{
+        Please change your compiler settings to LuaLaTeX and recompile.
+    }
+\fi
+\ifXeTeX
+    \PackageError{academicCV_z}{
+        XeLaTeX is not supported. Use LuaLaTeX.
+    }{
+        Please change your compiler settings to LuaLaTeX and recompile.
+    }
+\fi
+
+% Variable definition
+
+\newcommand{\@myname}{}
+\newcommand{\@myaddress}{}
+\newcommand{\@myposition}{}
+\newcommand{\@mytel}{}
+\newcommand{\@myemail}{}
+\newcommand{\@mysite}{}
+
+\newcommand{\myname}[1]{\renewcommand{\@myname}{#1}}
+\newcommand{\myaddress}[1]{\renewcommand{\@myaddress}{#1}}
+\newcommand{\myposition}[1]{\renewcommand{\@myposition}{#1}}
+\newcommand{\mytel}[1]{\renewcommand{\@mytel}{#1}}
+\newcommand{\myemail}[1]{\renewcommand{\@myemail}{#1}}
+\newcommand{\mysite}[1]{\renewcommand{\@mysite}{#1}}
+
+% Load dependencies
+
+\RequirePackage[match]{luatexja-fontspec} % Chinese fonts
+\RequirePackage{silence}
+
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
+\RequirePackage{xkeyval}
+
+\RequirePackage{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage{setspace}
+\RequirePackage{xcolor}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{fontspec}
+\RequirePackage{fontawesome5}
+\RequirePackage{academicons}
+
+\RequirePackage{titlesec}
+\RequirePackage{array}
+\RequirePackage{enumitem}
+\RequirePackage{etaremune}
+
+% Page layout
+
+\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\footskip}{5pt} % fancyhdr warning
+
+% font setup
+
+\setmainfont{Cardo}[
+    Path=./fonts/,
+    Extension=.ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-Italic,
+    SmallCapsFont=*-Regular,
+]
+\setsansfont{Lato}[
+    Path=./fonts/,
+    Extension=.ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-Italic,
+    SmallCapsFont=*-Regular,
+]
+\setmainjfont{SourceHanSerifSC}[
+    Path=./fonts/,
+    Extension=.otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Regular,
+    BoldItalicFont=*-Regular,
+    SmallCapsFont=*-Regular,
+]
+\setsansjfont{SourceHanSansSC}[
+    Path=./fonts/,
+    Extension=.otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Regular,
+    BoldItalicFont=*-Regular,
+    SmallCapsFont=*-Regular,
+]
+
+% suppress the warning by fontawesome5
+
+\WarningFilter{latexfont}{Font shape `JT3}
+\WarningFilter{latexfont}{Font shape `JY3}
+\WarningFilter{latexfont}{Some font shapes were not available}
+
+% Hyperlink and colors setup
+
+\definecolor{linkcolor}{RGB}{0,0,199}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    filecolor=linkcolor,
+    urlcolor=linkcolor
+}
+\AtBeginDocument{
+    \hypersetup{
+        pdfauthor={\@myname},
+        pdftitle={Curriculum Vitae for \@myname}
+    }
+}
+
+% set general styles
+
+\setlength{\parindent}{0mm}
+\newcommand{\BeforeSectionTitle}{1mm}
+\newcommand{\AfterSectionTitle}{0mm}
+\newcommand{\BeforeSubsectionTitle}{0mm}
+\newcommand{\AfterSubsectionTitle}{0mm}
+
+\newcommand{\AfterNameSkip}{\vspace{4.5mm}}
+\newcommand{\IconSep}{\hspace{0.5em}}
+\newcommand{\IconInline}[1]{\raisebox{-0.05em}{#1}}
+\newcommand{\EntrySeparator}{\hspace{0.75em}\textbar\hspace{0.75em}}
+\newcommand{\BeforeTextSkip}{\vspace{1mm}} % added before text paragraph / list immediately after section titles
+\newcommand{\AfterTextSkip}{\vspace{2mm}}
+\raggedbottom
+% \widowpenalty=0
+% \clubpenalty=0
+\titleformat{\section}{
+    \bfseries \raggedright \large \sffamily
+}{}{0em}{}[\vspace{-3mm}\rule{\textwidth}{0.5pt}]
+\titlespacing*{\section}{0mm}{\BeforeSectionTitle}{\AfterSectionTitle}
+
+\titleformat{\subsection}{
+    \bfseries \raggedright \sffamily
+}{}{0em}{}
+\titlespacing*{\subsection}{0mm}{\BeforeSubsectionTitle}{\AfterSubsectionTitle}
+
+% set 2x2 table styles
+
+\newcommand{\RightColWidth}{5.5cm}
+\newcommand{\TopLeftStyle}[1]{\textbf{#1}}
+\newcommand{\TopRightStyle}[1]{#1}
+\newcommand{\BottomLeftStyle}[1]{\textit{#1}}
+\newcommand{\BottomRightStyle}[1]{#1}
+\newcommand{\DescriptionStyle}[1]{#1 \AfterTextSkip}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+% set list styles
+
+\newcommand{\ListIndent}{2em}
+\newcommand{\ListTextIndent}{4em} % for text bullet points (ORAL, POSTER, GUEST, KEYNOTE etc.)
+\setlist{itemsep=0pt, parsep=0pt, topsep=0pt, partopsep=0pt, leftmargin=\ListIndent}
+
+% set the header
+
+\newcommand{\makeheader}{
+    \begin{center}
+        {\Huge \sffamily \textbf{\@myname}}
+        \AfterNameSkip
+
+        \@myposition
+
+        \textit{\@myaddress}
+        \vspace{3mm}
+
+        \ifdefempty{\@mysite}
+            {电话：\IconSep\@mytel \EntrySeparator 邮箱：\IconSep\href{mailto:\@myemail}{\@myemail}}
+            {电话：\IconSep\@mytel \EntrySeparator 邮箱：\IconSep\href{mailto:\@myemail}{\@myemail} \EntrySeparator 个人主页：\href{https://\@mysite}{\@mysite}}
+    \end{center}
+}
+
+% academic contact environment
+\newenvironment{acmedia}{
+    \begin{center}
+    \vspace{-3.5mm}
+}{
+    \end{center}
+    \AfterTextSkip
+}
+% more icons see fontawesome5 and academicons
+\newcommand{\myGoogleScholar}[2]{\IconInline{\aiGoogleScholar}\IconSep\href{#1}{#2}}
+\newcommand{\myORCID}[2]{\IconInline{\aiOrcid}\IconSep\href{#1}{#2}}
+\newcommand{\myResearchGate}[2]{\IconInline{\aiResearchGate}\IconSep\href{#1}{#2}}
+\newcommand{\myAcademia}[2]{\IconInline{\aiAcademia}\IconSep\href{#1}{#2}}
+\newcommand{\myGitHub}[2]{\IconInline{\faGithub}\IconSep\href{#1}{#2}}
+\newcommand{\myLinkedIn}[2]{\IconInline{\faLinkedin}\IconSep\href{#1}{#2}}
+\newcommand{\myTwitter}[2]{\IconInline{\faTwitter}\IconSep\href{#1}{#2}}
+
+% an entry of education / employment experience
+% Usage: \experience{<position>}{<date>}{<organization>}{<location>}{<description(optional)>}
+
+\newcommand{\experience}[5]{
+    \setlength\tabcolsep{0pt}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - \RightColWidth} R{\RightColWidth}}
+        \TopLeftStyle{#1}    & \TopRightStyle{#2} \\
+        \BottomLeftStyle{#3} & \BottomRightStyle{#4}
+    \ifstrempty{#5}
+        {
+            \end{tabular*}
+        }{
+            \end{tabular*}
+            \DescriptionStyle{#5}
+        }
+}
+
+% an entry of fellowship / honor / award etc. 
+% Usage: \award{<name>}{<date>}{<event>}{<description(optional)>}
+
+\newcommand{\award}[4]{
+    \setlength\tabcolsep{0pt}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - \RightColWidth} R{\RightColWidth}}
+        \TopLeftStyle{#1}    & \TopRightStyle{#2} \\
+        \BottomLeftStyle{#3} &
+    \ifstrempty{#4}
+        {
+            \end{tabular*}
+        }{
+            \end{tabular*}
+            \DescriptionStyle{#4}
+        }
+}
+
+% an entry of research grant
+% Usage: \grant{<name>}{<date>}{<source>}{<amount(optional)>}{<description(optional)>}
+
+\newcommand{\grant}[5]{
+    \setlength\tabcolsep{0pt}
+    \setlength{\extrarowheight}{0pt}
+    \ifstrempty{#4}
+        {
+            \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - \RightColWidth} R{\RightColWidth}}
+                \TopLeftStyle{#1}    & \TopRightStyle{#2} \\
+                \BottomLeftStyle{#3} & 
+        }{
+            \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - \RightColWidth} R{\RightColWidth}}
+                \TopLeftStyle{#1}    & \TopRightStyle{#2} \\
+                \BottomLeftStyle{#3} & \BottomRightStyle{#4}
+        }
+    
+    \ifstrempty{#5}
+        {
+            \end{tabular*}
+        }{
+            \end{tabular*}
+            \DescriptionStyle{#5}
+        }
+}
+
+% Publication list environment
+% Usage: \begin{paperlist}[ascending=<true/false>]\end{paperlist}
+
+\define@boolkey{papers}{ascending}[true]{}
+\newenvironment{paperlist}[1][]{
+    \BeforeTextSkip
+    \setkeys{papers}{ascending=true, #1}
+    \ifKV@papers@ascending
+        \begin{enumerate}[label={[\arabic*]}]
+    \else
+        \renewcommand{\labelenumi}{[\theenumi]}
+        \begin{etaremune}[itemsep=0pt, parsep=0pt, topsep=0pt, partopsep=0pt, leftmargin=\ListIndent]
+    \fi
+}{
+    \AfterTextSkip
+    \ifKV@papers@ascending
+        \end{enumerate}
+    \else
+        \end{etaremune}
+    \fi
+}
+
+% Journal paper entry, must be used within paperlist environment
+% Usage: \journal{<author>}{<title>}{<journal>}{<year>}{<volume(optional)>}{<issue(optional)>}{<page(optional)>}{<DOI(optional, without https://doi.org/)>}{<other comments(optional)>}
+
+\newcommand{\DOI}[2]{\href{https://doi.org/#1}{#2}}
+\newcommand{\journal}[9]{
+    \item %
+    #1. %
+    \ifstrempty{#8}{#2. }{\DOI{#8}{#2}. }%
+    \textit{#3}, #4;%
+    \ifstrempty{#5}{}{#5}%
+    \ifstrempty{#6}{: }{(#6): }%
+    \ifstrempty{#7}{. }{#7. }%
+    \ifstrempty{#9}{}{#9}%
+}
+
+% Preprint entry, must be used within paperlist environment
+% Usage: \preprint{<author>}{<title>}{<journal/server>}{<status>}{<year>}{<DOI(optional, without https://doi.org/)>}{<other comments(optional)>}
+
+\newcommand{\preprint}[7]{
+    \item %
+    #1. %
+    \ifstrempty{#6}{#2. }{\DOI{#6}{#2}. }%
+    \textit{#3} [#4], #5. %
+    \ifstrempty{#7}{}{#7}%
+}
+
+% Conference paper entry, must be used within paperlist environment
+% Usage: \conference{<author>}{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+
+\newcommand{\conference}[7]{
+    \item %
+    #1. %
+    \ifstrempty{#6}{#2. }{\href{#6}{#2}. }%
+    Presented at \textit{#3}, #4. (#5). %
+    \ifstrempty{#7}{}{#7}%
+}
+
+% Book chapter entry, must be used within paperlist environment
+% Usage: \chapter{<author>}{<chaptertitle>}{<editor(optional)>}{<booktitle>}{<edition(optional)>}{<location(optional)>}{<publisher>}{<year>}{<page>}{<URL(optional)>}{<other comments(optional)>}
+
+\newcommand{\chapter}[3]{
+    \item %
+    #1. #2. In: \ifstrempty{#2}{}{#3. (eds.) }%
+    \chapterContinued
+}
+\newcommand{\chapterContinued}[8]{
+    \ifstrempty{#7}{\textit{#1}. }{\href{#7}{\textit{#1}}. }%
+    \ifstrempty{#2}{}{#2 ed. }%
+    \ifstrempty{#3}{}{#3: }%
+    #4; #5. p. #6. %
+    \ifstrempty{#8}{}{#8}%
+}
+
+% Presentation list environment
+% Usage: \begin{prelist}\end{prelist}
+
+\newenvironment{prelist}{
+    \BeforeTextSkip
+    \begin{itemize}[leftmargin=\ListTextIndent]
+}{
+    \AfterTextSkip
+    \end{itemize}
+}
+
+% oral presentation entry, must be used within prelist environment
+% Usage: \oral{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+
+\newcommand{\oral}[6]{
+    \item[演\hspace{1em}讲] %
+    \ifstrempty{#5}{#1. }{\href{#5}{#1}. }%
+    \textit{#2}, #3 (#4). %
+    \ifstrempty{#6}{}{#6}%
+}
+
+% poster presentation entry, must be used within prelist environment
+% Usage: \poster{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+
+\newcommand{\poster}[6]{
+    \item[海\hspace{1em}报] %
+    \ifstrempty{#5}{#1. }{\href{#5}{#1}. }%
+    \textit{#2}, #3 (#4). %
+    \ifstrempty{#6}{}{#6}%
+}
+
+% keynote presentation entry, must be used within prelist environment
+% Usage: \keynote{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+
+\newcommand{\keynote}[6]{
+    \item[主\hspace{1em}旨] %
+    \ifstrempty{#5}{#1. }{\href{#5}{#1}. }%
+    \textit{#2}, #3 (#4). %
+    \ifstrempty{#6}{}{#6}%
+}
+
+% guest presentation entry, must be used within prelist environment
+% Usage: \guest{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+
+\newcommand{\guest}[6]{
+    \item[受\hspace{1em}邀] %
+    \ifstrempty{#5}{#1. }{\href{#5}{#1}. }%
+    \textit{#2}, #3 (#4). %
+    \ifstrempty{#6}{}{#6}%
+}
+
+% Text description environment - used for all other descriptions
+
+\newenvironment{text}{\BeforeTextSkip}{\AfterTextSkip}

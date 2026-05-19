@@ -1,0 +1,347 @@
+%!TEX encoding = UTF-8 Unicode
+% LaTeX Template for CV/Resume
+%-------------------------------------------------------------------------------
+% LuaLaTeX compilation needed
+%-------------------------------------------------------------------------------
+% Huanyu Zhou <spica.h.zhou@gmail.com>
+% https://spica-vir.github.io/about/
+%-------------------------------------------------------------------------------
+
+% configure
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{academicCV_en}
+
+% contacts
+
+\myname{A Good Man}
+\myposition{Scientific Researcher}
+\myaddress{Distinguished Department, A Famous University, City 1 000001, State A}
+
+\mytel{0123456789}
+\myemail{goodman@email.com}
+\mysite{this.url.does.not.exist/} % Personal website, without 'https://', optional
+
+% Some self-defined commands to make CV looks better
+
+% Highlight my name in author list
+\newcommand{\MeAsAuthor}{\textbf{\underline{Goodman A}}}
+\newcommand{\MeAsCorrespondingAuthor}{\textbf{\underline{Goodman A*}}}
+
+% Add comments (editor's pick, under review, etc.) to a paper entry in the publication list
+\newcommand{\PaperComment}[1]{\textbf{\underline{(#1)}}}
+
+\begin{document}
+
+%-------------------------------------------------------------------------------
+% Contact Info
+%-------------------------------------------------------------------------------
+
+\makeheader % basic information defined above
+
+% academic social media
+%
+% The following commands are defined in a similar way to '\href'.
+% For other social media, commands need to be defined in 'my_CVstyle.sty'
+% \myGoogleScholar
+% \myORCID
+% \myResearchGate
+% \myAcademia
+% \myGitHub
+% \myLinkedIn
+% \myTwitter
+%
+\begin{acmedia}
+	\myGoogleScholar{https://scholar.google.com/}{Google Scholar}
+	\EntrySeparator
+	\myORCID{https://orcid.org/}{ORCID}
+	\EntrySeparator
+	\myGitHub{https://github.com/}{GitHub}
+	\EntrySeparator
+	\myLinkedIn{https://www.linkedin.com/}{LinkedIn}
+\end{acmedia}
+
+%-------------------------------------------------------------------------------
+% Employment History
+%-------------------------------------------------------------------------------
+
+\section{Employment History}
+
+% an entry of education / employment
+% Usage: \experience{<position>}{<date>}{<organization>}{<location>}{<description(optional)>}
+
+\experience
+	{Scientific Researcher}
+	{2025 -- Now}
+	{Distinguished Department, A Famous University}
+	{City 1, State A}
+	{\begin{itemize}
+		\item[-] Whatever explains this position
+	\end{itemize}}
+
+%-------------------------------------------------------------------------------
+% Other Positions and Membership of Professional Bodies
+%-------------------------------------------------------------------------------
+
+\section{Other Positions and Membership of Professional Bodies}
+
+\experience
+	{Membership / Fellowship}
+	{2021 -- Now}
+	{A society}
+	{City 2, State B}{}
+
+\experience
+	{A part-time position}
+	{2022 -- 2023}
+	{Advisory board of a company}
+	{City 3, State C}{}
+
+%-------------------------------------------------------------------------------
+% Education
+%-------------------------------------------------------------------------------
+
+\section{Education}
+
+\experience
+	{Doctor of Philosophy}
+	{2021 -- 2025}
+	{Distinguished Department, A Famous University}
+	{City 1, State A}
+	{\begin{itemize}
+		\item[-] Supervisor: Prof. Brilliant
+	\end{itemize}}
+
+\experience
+	{Master of Science}
+	{2020 -- 2021}
+	{Celebrated Department, Yet Another Famous University}
+	{City 2, State B}
+	{\begin{itemize}
+		\item[-] Supervisor: Prof. Genius
+		\item[-] GPA: \textbf{100}/100, Rank: \textbf{1}/40
+	\end{itemize}}
+
+\experience
+	{Bachelor of Science}
+	{2016 -- 2020}
+	{Renowned College, An Equally Famous University}
+	{City 3, State C}
+	{\begin{itemize}
+		\item[-] FYP supervisor: Prof. Talented
+		\item[-] GPA: \textbf{100}/100, Rank: \textbf{top 1\%}
+	\end{itemize}}
+
+%-------------------------------------------------------------------------------
+% Research interests
+%-------------------------------------------------------------------------------
+\section{Research Interests}
+
+\begin{text}
+\begin{itemize}[leftmargin=1em]
+	\item Research topic A that makes you famous;
+	\item Research topic B that makes you rich;
+	\item Research topic C that makes you smart.
+\end{itemize}
+\end{text}
+
+%-------------------------------------------------------------------------------
+% Awards and Fellowships
+%-------------------------------------------------------------------------------
+
+\section{Awards and Fellowships}
+
+% an entry of fellowship / honor / award etc. 
+% Usage: \award{<name>}{<date>}{<event>}{<description(optional)>}
+
+\award
+	{A Big Fellowship}
+	{2026 -- Now}
+	{A research organization}
+	{Some details about this fellowship}
+
+\award
+	{An Award}
+	{2024}
+	{International Conference}{}
+
+%-------------------------------------------------------------------------------
+% Grants
+%-------------------------------------------------------------------------------
+
+\section{Research Grants}
+
+\subsection{Role: Principal Investigator}
+
+% an entry of research grants
+% Usage: \grant{<name>}{<date>}{<source>}{<amount(optional)>}{<description(optional)>}
+
+\grant
+	{The fundamental research on an important topic}
+	{2025 -- 2030}
+	{Funding Body A (code: AB123456/X)}
+	{£ 1,000,000}{}
+
+\subsection{Role: Key Personnel}
+
+\grant
+	{The application of a new theory}
+	{2021 -- 2024}
+	{A Collaborative Company (code: CD987654/Y)}
+	{£ 500,000}{
+		\begin{itemize}
+			\item[-] Collaborators: Dr Smart (Institute A), Prof. Intelligent (University B)
+		\end{itemize}
+	}
+
+\subsection{Compute and Travel Grants}
+
+\grant
+	{National Supercomputer}
+	{2022 -- Now}
+	{The HPC Center, project code 01234)}
+	{1 M CPUh}{}
+
+\grant
+	{Conference Travel Grant}
+	{2023}
+	{Conference Organizer}
+	{£500}{}
+
+%-------------------------------------------------------------------------------
+% List of Publications
+%-------------------------------------------------------------------------------
+
+\section{Publications}
+
+% Publication list environment
+% Usage: \begin{paperlist}[ascending=<true/false>]\end{paperlist}
+
+\begin{paperlist}[ascending=true]
+	% Preprint entry, must be used within paperlist environment
+	% Usage: \preprint{<author>}{<title>}{<journal/server>}{<status>}{<year>}{DOI(optional, without https://doi.org/)}{<other comments(optional)>}
+	\preprint
+		{\MeAsCorrespondingAuthor, Collaborator A, Collaborator B}
+		{Preprint for a ground-breaking research on topic A}
+		{arXiv}
+		{Preprint}
+		{2026}{}{}
+
+	% Journal paper entry, must be used within paperlist environment
+	% Usage: \journal{<author>}{<title>}{<journal>}{<year>}{<volume(optional)>}{<issue(optional)>}{<page(optional)>}{DOI(optional, without https://doi.org/)}{<other comments(optional)>}
+	\journal
+		{Collaborator A, \MeAsAuthor, Collaborator B}
+		{Journal paper for a theoretical research on topic B}
+		{Peer-reviewed Journal}
+		{2026}
+		{00}
+		{00}
+		{0001--0009}{}{\PaperComment{Cover Article}}
+
+	% Conference paper entry, must be used within paperlist environment
+	% Usage: \conference{<author>}{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+	\conference
+		{\MeAsCorrespondingAuthor, Collaborator A}
+		{Conference paper for an experimental research on topic C}
+		{International Conference on Experimental Research}
+		{City, State}
+		{11th Dec. 2025}{}{}
+
+	% Book chapter entry, must be used within paperlist environment
+	% Usage: \chapter{<author>}{<chaptertitle>}{<editor(optional)>}{<booktitle>}{<edition(optional)>}{<location(optional)>}{<publisher>}{<year>}{<page>}{<URL(optional)>}{<other comments(optional)>}
+	\chapter
+		{\MeAsAuthor}
+		{Fundamental Theory on Topic D}
+		{Mr Editor, Ms Editor}
+		{Introduction to Topic D}
+		{1st}
+		{Location}
+		{Publisher}
+		{2020}
+		{16-32}{}{}
+
+\end{paperlist}
+
+%-------------------------------------------------------------------------------
+% List of Presentations
+%-------------------------------------------------------------------------------
+
+\section{Presentations}
+
+\subsection{Invited Presentations}
+% Presentation list environment
+% Usage: \begin{prelist}\end{prelist}
+\begin{prelist}
+	% keynote presentation entry, must be used within prelist environment
+	% Usage: \keynote{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+	\keynote
+		{The progress review of research topic A}
+		{International Conference on Topic A}
+		{City, State}
+		{2024}{https://www.youtube.com/}{}
+
+	% guest presentation entry, must be used within prelist environment
+	% Usage: \guest{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+	\guest
+		{My research on topic B}
+		{Departmental Seminar}
+		{Department, University}
+		{2023}{}{}
+\end{prelist}
+
+\subsection{Contributed Presentations}
+\begin{prelist}
+	% oral presentation entry, must be used within prelist environment
+	% Usage: \oral{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+	\oral
+		{The presentation of some preliminary results}
+		{Regional Conference on Topic C}
+		{City, State}
+		{2021}{}{}
+
+	% poster presentation entry, must be used within prelist environment
+	% Usage: \poster{<title>}{<conference>}{<location>}{<date>}{<URL(optional)>}{<other comments(optional)>}
+	\poster
+		{To exchange ideas on topic D}
+		{Discussion meeting by a society}
+		{Academic Society}
+		{2022}{}{}
+
+\end{prelist}
+
+%-------------------------------------------------------------------------------
+% Teaching and Mentoring experiences
+%-------------------------------------------------------------------------------
+\section{Teaching and Mentoring Experiences}
+
+\subsection{Lectures}
+
+\experience
+	{Introduction to Research}
+	{2025 -- Now}
+	{Lecturer, A Famous University}
+	{}{}
+
+\experience
+	{Experimental Lab}
+	{2021 -- 2025}
+	{Teaching Assistant, Yet Another Famous University}
+	{}{}
+
+\subsection{Research Projects}
+
+\experience
+	{An interesting research on topic A}
+	{2026 -- Now}
+	{PhD, A Famous University}
+	{Mr Student}
+	{}
+
+\experience
+	{An even more interesting research on topic B}
+	{2024 -- 2026}
+	{MSi, A Famous University}
+	{Ms Student}
+	{}
+
+\end{document}
