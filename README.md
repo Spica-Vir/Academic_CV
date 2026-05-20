@@ -35,7 +35,7 @@ The defined commands are listed below with necessary explanations.
 | `\myname{<name>}`                 | Mandatory   |
 | `\myaddress{<address>}`           | Mandatory   |
 | `\myposition{<position>}`         | Mandatory   |
-| `\mytel{<phonon>}`                | Mandatory   |
+| `\mytel{<phone>}`                 | Mandatory   |
 | `\myemail{<email>}`               | Mandatory   |
 | `\mysite{<website>}`              | without 'https://' |
 | `\makeheader`                     |             |
